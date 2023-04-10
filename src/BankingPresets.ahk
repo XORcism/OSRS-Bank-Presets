@@ -29,7 +29,8 @@ depY := 825                            ;
 ;;;;;;;;;;;;;;;;;; All Functions ;;;;;;;;;;;;;;;;;;
 
 ; LoadPreset(All Tab x-coordinate, All Tab y-coordinate, Desired Tab x-coordinate, Desired Tab y-coordinate)
-LoadPreset(allTabX, allTabY, tabX, tabY){
+LoadPreset(tabX, tabY){
+        global allTabX, allTabY
         MouseMove, %allTabX%, %allTabY%
         click
         sleep 100
@@ -53,21 +54,24 @@ LoadPreset(allTabX, allTabY, tabX, tabY){
 
 ; DepositAll()
 DepositAll() {
+        sleep 100
         global depX, depY
         MouseMove, %depX%, %depY%
         click
+        Reload
+        sleep 100
         Return
 }
 
 
 ; Load TAB 1 ;
 1::
-        LoadPreset(allTabX, allTabY, tab1X, tab1Y)
+        LoadPreset(tab1X, tab1Y)
         Return
 
 ; Load TAB 2 ;
 2::
-        LoadPreset(allTabX, allTabY, tab2X, tab2Y)
+        LoadPreset(tab2X, tab2Y)
         Return
 ; Deposit entire inventory
 3::
