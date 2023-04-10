@@ -2,30 +2,75 @@
         BankPresets.ahk
         Developed by XORcism
 */
+#IfWinActive, RuneLite ; Will only run these hotkeys if RuneLite is active
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 
-;; Globally used variables
-; Coordinates for the "All Items tab"
-allTabX = 635
-allTabY = 101
-;; END Globally used variables
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;    Declaring Global Variables        ;
+;______________________________________;
+; Coordinates for the "All Items tab"  ;
+allTabX := 635                         ;
+allTabY := 101                         ;
+;                                      ;
+; Coordinates for Tab 1                ;
+tab1X := 600                           ;
+tab1Y = 165                            ;
+;                                      ;
+; Coordinates for Tab 2                ;
+tab2X := 600                           ;
+tab2Y = 205                            ;
+;                                      ;
+; Coordinates for Deposit all          ;
+depX := 1000                           ;
+depY := 825                            ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;; All Functions ;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TAB 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; LoadPreset(All Tab x-coordinate, All Tab y-coordinate, Desired Tab x-coordinate, Desired Tab y-coordinate)
+LoadPreset(allTabX, allTabY, tabX, tabY){
+        MouseMove, %allTabX%, %allTabY%
+        click
+        sleep 100
+        MouseMove, %tabX%, %tabY%
+        click
+        sleep 100
+        MouseMove, 645, 142
+        click
+        MouseMove, 695, 142
+        click
+        MouseMove, 745, 142
+        click
+        MouseMove, 795, 142
+        click
+        MouseMove, 845, 142
+        click
+        MouseMove, 895, 142
+        click
+        Return
+}
+
+; DepositAll()
+DepositAll() {
+        global depX, depY
+        MouseMove, %depX%, %depY%
+        click
+        Return
+}
+
+
+; Load TAB 1 ;
 1::
-MouseMove, %allTabX%, %allTabY%
-click
-sleep 100
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TAB 1 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        LoadPreset(allTabX, allTabY, tab1X, tab1Y)
+        Return
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TAB 2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Load TAB 2 ;
 2::
-MouseMove, %allTabX%, %allTabY%
-click
-sleep 100
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; TAB 2 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+        LoadPreset(allTabX, allTabY, tab2X, tab2Y)
+        Return
+; Deposit entire inventory
+3::
+        DepositAll()
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-3::ExitApp
